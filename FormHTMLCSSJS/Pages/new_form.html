@@ -35,6 +35,7 @@
     <div>
         <label for="tel">tel input type: </label>
         <input type="tel" id="tel" name="tel" required>
+        <error-output class="mobile-error" for="number"></error-output>
     </div>
     <div>
         <label for="search">search input type: </label>
@@ -72,6 +73,15 @@
             if (emailRegex.test(email.value)) 
                 emailError.textContent = "";
             else emailError.textContent = "Email is Incorrect";
+        });
+
+        const mobile = document.querySelector('#tel');
+        const mobileError = document.querySelector('.mobile-error');
+        mobile.addEventListener('input', function(){
+            let mobileRegex = RegExp('[0-9]{10}');
+            if(mobileRegex.test(mobile.value))
+            mobileError.textContent = "";
+            else mobileError.textContent = "Mobile format is invalid!";
         });
         
         const salary = document.querySelector('#salary');
